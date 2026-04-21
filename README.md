@@ -41,6 +41,9 @@ Informações sensíveis:
 - [Slides via PM2](docs/04-servicos/slides-pm2.md)
 - [Operação, Caminhos e Comandos Úteis](docs/05-operacao-e-caminhos.md)
 - [Pendências e Alertas](docs/06-pendencias-e-alertas.md)
+- [Replicação e Recuperação](docs/07-replicacao-e-recuperacao.md)
+- [Portainer, YAMLs e Backup Privado](docs/08-portainer-yamls-e-backup-privado.md)
+- [Artefatos Sanitizados do Portainer](docs/artefatos/portainer-stacks-sanitizadas/README.md)
 
 ## Resumo Executivo
 
@@ -70,3 +73,7 @@ Serviços expostos diretamente por porta:
 
 Observação importante:
 - embora o `ufw` só permita explicitamente `22`, `80` e `443`, serviços Docker publicados em `3001` e `8088` aparecem em escuta no host; isso precisa ser considerado em qualquer revisão de segurança
+
+Camada extra de segurança documental:
+- este repositório agora inclui snapshots sanitizados das stacks salvas no Portainer
+- os artefatos brutos com segredos foram guardados fora do Git em um kit privado de recuperação

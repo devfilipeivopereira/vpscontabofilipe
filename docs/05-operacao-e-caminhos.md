@@ -6,6 +6,8 @@
 |---|---|
 | `/root/supabase/docker` | config/base do Supabase |
 | `/etc/traefik/dynamic` | regras dinâmicas do Traefik |
+| `/var/lib/docker/volumes/portainer_data/_data/compose` | compose files persistidas pelo Portainer |
+| `/var/lib/docker/volumes/portainer_data/_data/portainer.db` | base interna do Portainer |
 | `/var/lib/docker/volumes` | volumes Docker |
 | `/var/www/slides-app` | app `slides` |
 | `/root/.pm2` | PM2 state/logs |
@@ -64,6 +66,12 @@ docker service inspect n8n_n8n_editor
 docker service inspect supabase_supabase_kong
 ```
 
+Backup bruto do Portainer:
+
+```bash
+tar -czf /root/portainer-compose-backup.tgz -C /var/lib/docker/volumes/portainer_data/_data compose portainer.db
+```
+
 ## PM2
 
 ```bash
@@ -96,3 +104,9 @@ No momento da coleta, existiam artefatos em `/opt/backups` como:
 - `uptime-kuma-2026-04-21_03-00.tar.gz`
 
 Essa pasta merece uma política documentada à parte se os backups forem parte do fluxo oficial.
+
+## Recuperação e replicação
+
+Material complementar:
+- [Replicação e Recuperação](07-replicacao-e-recuperacao.md)
+- [Portainer, YAMLs e Backup Privado](08-portainer-yamls-e-backup-privado.md)

@@ -1,0 +1,244 @@
+# Sanitized snapshot generated from Portainer compose backup
+# compose_id: 2
+# stack_name: n8n
+# Sensitive values were replaced with placeholders.
+version: '3.7'
+services:
+  n8n_editor:
+    image: n8nio/n8n:latest
+    command: start
+    networks:
+    - FilipeNet
+    environment:
+    - N8N_FIX_MIGRATIONS=true
+    - DB_TYPE=<set:DB_TYPE>
+    - DB_POSTGRESDB_DATABASE=<set:DB_POSTGRESDB_DATABASE>
+    - DB_POSTGRESDB_HOST=<set:DB_POSTGRESDB_HOST>
+    - DB_POSTGRESDB_PORT=5432
+    - DB_POSTGRESDB_USER=<set:DB_POSTGRESDB_USER>
+    - DB_POSTGRESDB_PASSWORD=<redacted:DB_POSTGRESDB_PASSWORD>
+    - N8N_ENCRYPTION_KEY=<redacted:N8N_ENCRYPTION_KEY>
+    - N8N_HOST=<set:N8N_HOST>
+    - N8N_EDITOR_BASE_URL=<redacted:N8N_EDITOR_BASE_URL>
+    - WEBHOOK_URL=<redacted:WEBHOOK_URL>
+    - N8N_PROTOCOL=<set:N8N_PROTOCOL>
+    - N8N_PROXY_HOPS=1
+    - N8N_ONBOARDING_FLOW_DISABLED=true
+    - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+    - N8N_SKIP_AUTH_ON_OAUTH_CALLBACK=false
+    - NODE_ENV=<set:NODE_ENV>
+    - EXECUTIONS_MODE=<set:EXECUTIONS_MODE>
+    - EXECUTIONS_TIMEOUT=3600
+    - EXECUTIONS_TIMEOUT_MAX=7200
+    - OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true
+    - N8N_RUNNERS_ENABLED=true
+    - N8N_RUNNERS_MODE=<set:N8N_RUNNERS_MODE>
+    - N8N_RESTRICT_FILE_ACCESS_TO=<set:N8N_RESTRICT_FILE_ACCESS_TO>
+    - NODES_EXCLUDE=<set:NODES_EXCLUDE>
+    - N8N_REINSTALL_MISSING_PACKAGES=true
+    - N8N_COMMUNITY_PACKAGES_ENABLED=true
+    - N8N_NODE_PATH=<set:N8N_NODE_PATH>
+    - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+    - N8N_SMTP_SENDER=<set:N8N_SMTP_SENDER>
+    - N8N_SMTP_USER=<set:N8N_SMTP_USER>
+    - N8N_SMTP_PASS=<set:N8N_SMTP_PASS>
+    - N8N_SMTP_HOST=<set:N8N_SMTP_HOST>
+    - N8N_SMTP_PORT=465
+    - N8N_SMTP_SSL=true
+    - QUEUE_BULL_REDIS_HOST=<set:QUEUE_BULL_REDIS_HOST>
+    - QUEUE_BULL_REDIS_PORT=6379
+    - QUEUE_BULL_REDIS_DB=1
+    - N8N_METRICS=true
+    - EXECUTIONS_DATA_PRUNE=true
+    - EXECUTIONS_DATA_MAX_AGE=336
+    - N8N_AI_ENABLED=false
+    - N8N_AI_PROVIDER=<set:N8N_AI_PROVIDER>
+    - N8N_AI_OPENAI_API_KEY=<empty>
+    - NODE_FUNCTION_ALLOW_BUILTIN=<set:NODE_FUNCTION_ALLOW_BUILTIN>
+    - NODE_FUNCTION_ALLOW_EXTERNAL=<set:NODE_FUNCTION_ALLOW_EXTERNAL>
+    - GENERIC_TIMEZONE=<set:GENERIC_TIMEZONE>
+    - TZ=<set:TZ>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1024M
+      labels:
+      - traefik.enable=true
+      - traefik.http.routers.n8n_editor.rule=Host(`work.filipeivopereira.com`)
+      - traefik.http.routers.n8n_editor.entrypoints=websecure
+      - traefik.http.routers.n8n_editor.priority=10
+      - traefik.http.routers.n8n_editor.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.n8n_editor.service=n8n_editor
+      - traefik.http.services.n8n_editor.loadbalancer.server.port=5678
+      - traefik.http.services.n8n_editor.loadbalancer.passHostHeader=1
+  n8n_webhook:
+    image: n8nio/n8n:latest
+    command: webhook
+    networks:
+    - FilipeNet
+    environment:
+    - N8N_FIX_MIGRATIONS=true
+    - DB_TYPE=<set:DB_TYPE>
+    - DB_POSTGRESDB_DATABASE=<set:DB_POSTGRESDB_DATABASE>
+    - DB_POSTGRESDB_HOST=<set:DB_POSTGRESDB_HOST>
+    - DB_POSTGRESDB_PORT=5432
+    - DB_POSTGRESDB_USER=<set:DB_POSTGRESDB_USER>
+    - DB_POSTGRESDB_PASSWORD=<redacted:DB_POSTGRESDB_PASSWORD>
+    - N8N_ENCRYPTION_KEY=<redacted:N8N_ENCRYPTION_KEY>
+    - N8N_HOST=<set:N8N_HOST>
+    - N8N_EDITOR_BASE_URL=<redacted:N8N_EDITOR_BASE_URL>
+    - WEBHOOK_URL=<redacted:WEBHOOK_URL>
+    - N8N_PROTOCOL=<set:N8N_PROTOCOL>
+    - N8N_PROXY_HOPS=1
+    - N8N_ONBOARDING_FLOW_DISABLED=true
+    - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+    - N8N_SKIP_AUTH_ON_OAUTH_CALLBACK=false
+    - NODE_ENV=<set:NODE_ENV>
+    - EXECUTIONS_MODE=<set:EXECUTIONS_MODE>
+    - EXECUTIONS_TIMEOUT=3600
+    - EXECUTIONS_TIMEOUT_MAX=7200
+    - OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true
+    - N8N_RUNNERS_ENABLED=true
+    - N8N_RUNNERS_MODE=<set:N8N_RUNNERS_MODE>
+    - N8N_RESTRICT_FILE_ACCESS_TO=<set:N8N_RESTRICT_FILE_ACCESS_TO>
+    - NODES_EXCLUDE=<set:NODES_EXCLUDE>
+    - N8N_REINSTALL_MISSING_PACKAGES=true
+    - N8N_COMMUNITY_PACKAGES_ENABLED=true
+    - N8N_NODE_PATH=<set:N8N_NODE_PATH>
+    - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+    - N8N_SMTP_SENDER=<set:N8N_SMTP_SENDER>
+    - N8N_SMTP_USER=<set:N8N_SMTP_USER>
+    - N8N_SMTP_PASS=<set:N8N_SMTP_PASS>
+    - N8N_SMTP_HOST=<set:N8N_SMTP_HOST>
+    - N8N_SMTP_PORT=465
+    - N8N_SMTP_SSL=true
+    - QUEUE_BULL_REDIS_HOST=<set:QUEUE_BULL_REDIS_HOST>
+    - QUEUE_BULL_REDIS_PORT=6379
+    - QUEUE_BULL_REDIS_DB=1
+    - N8N_METRICS=true
+    - EXECUTIONS_DATA_PRUNE=true
+    - EXECUTIONS_DATA_MAX_AGE=336
+    - N8N_AI_ENABLED=false
+    - N8N_AI_PROVIDER=<set:N8N_AI_PROVIDER>
+    - N8N_AI_OPENAI_API_KEY=<empty>
+    - NODE_FUNCTION_ALLOW_BUILTIN=<set:NODE_FUNCTION_ALLOW_BUILTIN>
+    - NODE_FUNCTION_ALLOW_EXTERNAL=<set:NODE_FUNCTION_ALLOW_EXTERNAL>
+    - GENERIC_TIMEZONE=<set:GENERIC_TIMEZONE>
+    - TZ=<set:TZ>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1024M
+      labels:
+      - traefik.enable=true
+      - traefik.http.routers.n8n_webhook.rule=Host(`webhook.filipeivopereira.com`)
+      - traefik.http.routers.n8n_webhook.entrypoints=websecure
+      - traefik.http.routers.n8n_webhook.priority=5
+      - traefik.http.routers.n8n_webhook.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.n8n_webhook.service=n8n_webhook
+      - traefik.http.services.n8n_webhook.loadbalancer.server.port=5678
+      - traefik.http.services.n8n_webhook.loadbalancer.passHostHeader=1
+  n8n_worker:
+    image: n8nio/n8n:latest
+    command: worker --concurrency=10
+    networks:
+    - FilipeNet
+    environment:
+    - N8N_FIX_MIGRATIONS=true
+    - DB_TYPE=<set:DB_TYPE>
+    - DB_POSTGRESDB_DATABASE=<set:DB_POSTGRESDB_DATABASE>
+    - DB_POSTGRESDB_HOST=<set:DB_POSTGRESDB_HOST>
+    - DB_POSTGRESDB_PORT=5432
+    - DB_POSTGRESDB_USER=<set:DB_POSTGRESDB_USER>
+    - DB_POSTGRESDB_PASSWORD=<redacted:DB_POSTGRESDB_PASSWORD>
+    - N8N_ENCRYPTION_KEY=<redacted:N8N_ENCRYPTION_KEY>
+    - N8N_HOST=<set:N8N_HOST>
+    - N8N_EDITOR_BASE_URL=<redacted:N8N_EDITOR_BASE_URL>
+    - WEBHOOK_URL=<redacted:WEBHOOK_URL>
+    - N8N_PROTOCOL=<set:N8N_PROTOCOL>
+    - N8N_PROXY_HOPS=1
+    - N8N_ONBOARDING_FLOW_DISABLED=true
+    - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+    - N8N_SKIP_AUTH_ON_OAUTH_CALLBACK=false
+    - NODE_ENV=<set:NODE_ENV>
+    - EXECUTIONS_MODE=<set:EXECUTIONS_MODE>
+    - EXECUTIONS_TIMEOUT=3600
+    - EXECUTIONS_TIMEOUT_MAX=7200
+    - OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true
+    - N8N_RUNNERS_ENABLED=true
+    - N8N_RUNNERS_MODE=<set:N8N_RUNNERS_MODE>
+    - N8N_RESTRICT_FILE_ACCESS_TO=<set:N8N_RESTRICT_FILE_ACCESS_TO>
+    - NODES_EXCLUDE=<set:NODES_EXCLUDE>
+    - N8N_REINSTALL_MISSING_PACKAGES=true
+    - N8N_COMMUNITY_PACKAGES_ENABLED=true
+    - N8N_NODE_PATH=<set:N8N_NODE_PATH>
+    - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+    - N8N_SMTP_SENDER=<set:N8N_SMTP_SENDER>
+    - N8N_SMTP_USER=<set:N8N_SMTP_USER>
+    - N8N_SMTP_PASS=<set:N8N_SMTP_PASS>
+    - N8N_SMTP_HOST=<set:N8N_SMTP_HOST>
+    - N8N_SMTP_PORT=465
+    - N8N_SMTP_SSL=true
+    - QUEUE_BULL_REDIS_HOST=<set:QUEUE_BULL_REDIS_HOST>
+    - QUEUE_BULL_REDIS_PORT=6379
+    - QUEUE_BULL_REDIS_DB=1
+    - N8N_METRICS=true
+    - EXECUTIONS_DATA_PRUNE=true
+    - EXECUTIONS_DATA_MAX_AGE=336
+    - N8N_AI_ENABLED=false
+    - N8N_AI_PROVIDER=<set:N8N_AI_PROVIDER>
+    - N8N_AI_OPENAI_API_KEY=<empty>
+    - NODE_FUNCTION_ALLOW_BUILTIN=<set:NODE_FUNCTION_ALLOW_BUILTIN>
+    - NODE_FUNCTION_ALLOW_EXTERNAL=<set:NODE_FUNCTION_ALLOW_EXTERNAL>
+    - GENERIC_TIMEZONE=<set:GENERIC_TIMEZONE>
+    - TZ=<set:TZ>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1024M
+  n8n_redis:
+    image: redis:latest
+    command:
+    - redis-server
+    - --appendonly
+    - 'yes'
+    - --port
+    - '6379'
+    volumes:
+    - n8n_redis:/data
+    networks:
+    - FilipeNet
+    deploy:
+      placement:
+        constraints:
+        - node.role == manager
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1024M
+volumes:
+  n8n_redis:
+    external: true
+    name: n8n_redis
+networks:
+  FilipeNet:
+    external: true
+    name: FilipeNet

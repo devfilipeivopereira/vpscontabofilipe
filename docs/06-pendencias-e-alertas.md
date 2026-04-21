@@ -75,3 +75,34 @@ Impacto:
 - não são necessariamente problema
 - mas fazem parte do inventário real da VPS e merecem classificação futura entre:
   `produção`, `teste`, `desenvolvimento` ou `arquivo`
+
+## 8. Snapshot do Portainer não cobre tudo o que está em produção
+
+As compose files detectadas em `portainer_data/_data/compose` cobrem:
+- `postgres`
+- `n8n`
+- `supabase`
+- `evolution`
+- `minio`
+- `directus`
+- `pgadmin`
+
+Não apareceram nesse conjunto:
+- `traefik`
+- `portainer`
+- `piwigo`
+- `uptime-kuma`
+
+Impacto:
+- uma restauração baseada apenas no Portainer fica incompleta
+- o runbook de recuperação precisa combinar snapshots do Portainer com artefatos do host
+
+## 9. Divergência entre compose salva e imagem em execução no Supabase Studio
+
+Comparativo observado:
+- compose do Portainer: `supabase/studio:2026.01.27-sha-2a37755`
+- serviço em execução: `supabase/studio:2025.11.10-sha-5291fe3`
+
+Impacto:
+- um restore pelo YAML do Portainer pode subir uma versão diferente da atualmente executada
+- antes de restaurar a stack `supabase`, vale decidir se a referência correta será a compose salva ou o estado realmente em produção

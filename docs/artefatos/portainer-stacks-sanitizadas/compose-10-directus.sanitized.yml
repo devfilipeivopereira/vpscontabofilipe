@@ -1,0 +1,94 @@
+# Sanitized snapshot generated from Portainer compose backup
+# compose_id: 10
+# stack_name: directus
+# Sensitive values were replaced with placeholders.
+version: '3.7'
+services:
+  directus_app:
+    image: directus/directus:11.15.0
+    volumes:
+    - directus_uploads:/directus/uploads
+    - directus_data:/directus/database
+    networks:
+    - FilipeNet
+    environment:
+    - ADMIN_EMAIL=<set:ADMIN_EMAIL>
+    - ADMIN_PASSWORD=<redacted:ADMIN_PASSWORD>
+    - PUBLIC_URL=<redacted:PUBLIC_URL>
+    - EMAIL_SMTP_USER=<set:EMAIL_SMTP_USER>
+    - EMAIL_SMTP_PASSWORD=<redacted:EMAIL_SMTP_PASSWORD>
+    - EMAIL_SMTP_HOST=<set:EMAIL_SMTP_HOST>
+    - EMAIL_SMTP_PORT=465
+    - EMAIL_SMTP_SECURE=true
+    - STORAGE_LOCATIONS=<set:STORAGE_LOCATIONS>
+    - STORAGE_S3_DRIVER=<set:STORAGE_S3_DRIVER>
+    - STORAGE_S3_KEY=<redacted:STORAGE_S3_KEY>
+    - STORAGE_S3_SECRET=<redacted:STORAGE_S3_SECRET>
+    - STORAGE_S3_BUCKET=<set:STORAGE_S3_BUCKET>
+    - STORAGE_S3_REGION=<set:STORAGE_S3_REGION>
+    - STORAGE_S3_ENDPOINT=<set:STORAGE_S3_ENDPOINT>
+    - CACHE_ENABLED=true
+    - CACHE_AUTO_PURGE=true
+    - CACHE_STORE=<set:CACHE_STORE>
+    - REDIS=<set:REDIS>
+    - KEY=<redacted:KEY>
+    - SECRET=<redacted:SECRET>
+    - APP_ENV=<set:APP_ENV>
+    - AI_MCP_ENABLED=true
+    - DB_CLIENT=<set:DB_CLIENT>
+    - DB_HOST=<set:DB_HOST>
+    - DB_PORT=5432
+    - DB_DATABASE=<set:DB_DATABASE>
+    - DB_USER=<set:DB_USER>
+    - DB_PASSWORD=<redacted:DB_PASSWORD>
+    - DB_CONNECTION_STRING=<redacted:DB_CONNECTION_STRING>
+    - DB_PREFIX=<set:DB_PREFIX>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+      labels:
+      - traefik.enable=true
+      - traefik.http.routers.directus_app.rule=Host(`directus.filipeivopereira.com`)
+      - traefik.http.services.directus_app.loadbalancer.server.port=8055
+      - traefik.http.routers.directus_app.service=directus_app
+      - traefik.http.routers.directus_app.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.directus_app.entrypoints=websecure
+      - traefik.http.routers.directus_app.tls=true
+  directus_redis:
+    image: redis:latest
+    command:
+    - redis-server
+    - --appendonly
+    - 'yes'
+    - --port
+    - '6379'
+    volumes:
+    - directus_redis:/data
+    networks:
+    - FilipeNet
+    deploy:
+      placement:
+        constraints:
+        - node.role == manager
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2048M
+volumes:
+  directus_uploads:
+    external: true
+    name: directus_uploads
+  directus_data:
+    external: true
+    name: directus_data
+  directus_redis:
+    external: true
+    name: directus_redis
+networks:
+  FilipeNet:
+    external: true
+    attachable: true
+    name: FilipeNet

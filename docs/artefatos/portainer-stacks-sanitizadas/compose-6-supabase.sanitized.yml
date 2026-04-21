@@ -1,0 +1,374 @@
+# Sanitized snapshot generated from Portainer compose backup
+# compose_id: 6
+# stack_name: supabase
+# Sensitive values were replaced with placeholders.
+version: '3.7'
+services:
+  supabase_studio:
+    image: supabase/studio:2026.01.27-sha-2a37755
+    networks:
+    - FilipeNet
+    environment:
+    - HOSTNAME=<set:HOSTNAME>
+    - SUPABASE_URL=<redacted:SUPABASE_URL>
+    - SUPABASE_PUBLIC_URL=<redacted:SUPABASE_PUBLIC_URL>
+    - SUPABASE_ANON_KEY=<redacted:SUPABASE_ANON_KEY>
+    - SUPABASE_SERVICE_KEY=<redacted:SUPABASE_SERVICE_KEY>
+    - AUTH_JWT_SECRET=<redacted:AUTH_JWT_SECRET>
+    - DEFAULT_ORGANIZATION_NAME=<set:DEFAULT_ORGANIZATION_NAME>
+    - DEFAULT_PROJECT_NAME=<set:DEFAULT_PROJECT_NAME>
+    - POSTGRES_DB=<set:POSTGRES_DB>
+    - POSTGRES_HOST=<set:POSTGRES_HOST>
+    - POSTGRES_PORT=5432
+    - POSTGRES_PASSWORD=<redacted:POSTGRES_PASSWORD>
+    - PG_META_CRYPTO_KEY=<redacted:PG_META_CRYPTO_KEY>
+    - LOGFLARE_URL=<redacted:LOGFLARE_URL>
+    - LOGFLARE_API_KEY=<redacted:LOGFLARE_API_KEY>
+    - LOGFLARE_PUBLIC_ACCESS_TOKEN=<redacted:LOGFLARE_PUBLIC_ACCESS_TOKEN>
+    - LOGFLARE_PRIVATE_ACCESS_TOKEN=<redacted:LOGFLARE_PRIVATE_ACCESS_TOKEN>
+    - NEXT_PUBLIC_ENABLE_LOGS=true
+    - NEXT_ANALYTICS_BACKEND_PROVIDER=<set:NEXT_ANALYTICS_BACKEND_PROVIDER>
+    - DEBUG=<set:DEBUG>
+    - STUDIO_PG_META_URL=<redacted:STUDIO_PG_META_URL>
+    - OPENAI_API_KEY=<redacted:OPENAI_API_KEY>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_kong:
+    image: kong:2.8.1
+    entrypoint: bash -c 'eval "echo \"$$(cat ~/temp.yml)\"" > ~/kong.yml && /docker-entrypoint.sh kong docker-start'
+    volumes:
+    - /root/supabase/docker/volumes/api/kong.yml:/home/kong/temp.yml:ro,z
+    networks:
+    - FilipeNet
+    environment:
+    - DASHBOARD_USERNAME=<set:DASHBOARD_USERNAME>
+    - DASHBOARD_PASSWORD=<redacted:DASHBOARD_PASSWORD>
+    - JWT_SECRET=<redacted:JWT_SECRET>
+    - SUPABASE_ANON_KEY=<redacted:SUPABASE_ANON_KEY>
+    - SUPABASE_SERVICE_KEY=<redacted:SUPABASE_SERVICE_KEY>
+    - KONG_DATABASE=off
+    - KONG_DECLARATIVE_CONFIG=<set:KONG_DECLARATIVE_CONFIG>
+    - KONG_DNS_ORDER=<set:KONG_DNS_ORDER>
+    - KONG_PLUGINS=<set:KONG_PLUGINS>
+    - KONG_NGINX_PROXY_PROXY_BUFFER_SIZE=<set:KONG_NGINX_PROXY_PROXY_BUFFER_SIZE>
+    - KONG_NGINX_PROXY_PROXY_BUFFERS=<set:KONG_NGINX_PROXY_PROXY_BUFFERS>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+      labels:
+      - traefik.enable=true
+      - traefik.http.routers.supabase_kong.rule=Host(`supabase.filipeivopereira.com`) && PathPrefix(`/`)
+      - traefik.http.services.supabase_kong.loadbalancer.server.port=8000
+      - traefik.http.routers.supabase_kong.service=supabase_kong
+      - traefik.http.routers.supabase_kong.entrypoints=websecure
+      - traefik.http.routers.supabase_kong.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.supabase_kong.tls=true
+  supabase_auth:
+    image: supabase/gotrue:v2.182.1
+    networks:
+    - FilipeNet
+    environment:
+    - GOTRUE_API_HOST=<set:GOTRUE_API_HOST>
+    - GOTRUE_API_PORT=9999
+    - API_EXTERNAL_URL=<redacted:API_EXTERNAL_URL>
+    - GOTRUE_DB_DRIVER=<set:GOTRUE_DB_DRIVER>
+    - GOTRUE_DB_DATABASE_URL=<redacted:GOTRUE_DB_DATABASE_URL>
+    - GOTRUE_JWT_ADMIN_ROLES=<set:GOTRUE_JWT_ADMIN_ROLES>
+    - GOTRUE_JWT_AUD=<set:GOTRUE_JWT_AUD>
+    - GOTRUE_JWT_DEFAULT_GROUP_NAME=<set:GOTRUE_JWT_DEFAULT_GROUP_NAME>
+    - GOTRUE_JWT_EXP=31536000
+    - GOTRUE_JWT_SECRET=<redacted:GOTRUE_JWT_SECRET>
+    - GOTRUE_EXTERNAL_EMAIL_ENABLED=true
+    - GOTRUE_EXTERNAL_ANONYMOUS_USERS_ENABLED=false
+    - GOTRUE_MAILER_AUTOCONFIRM=true
+    - GOTRUE_EXTERNAL_SKIP_NONCE_CHECK=true
+    - GOTRUE_MAILER_SECURE_EMAIL_CHANGE_ENABLED=true
+    - GOTRUE_SMTP_MAX_FREQUENCY=<set:GOTRUE_SMTP_MAX_FREQUENCY>
+    - GOTRUE_SITE_URL=<redacted:GOTRUE_SITE_URL>
+    - GOTRUE_URI_ALLOW_LIST=<redacted:GOTRUE_URI_ALLOW_LIST>
+    - GOTRUE_DISABLE_SIGNUP=false
+    - GOTRUE_SMTP_HOST=<set:GOTRUE_SMTP_HOST>
+    - GOTRUE_SMTP_PORT=465
+    - GOTRUE_SMTP_USER=<set:GOTRUE_SMTP_USER>
+    - GOTRUE_SMTP_PASS=<set:GOTRUE_SMTP_PASS>
+    - GOTRUE_SMTP_SENDER_NAME=<set:GOTRUE_SMTP_SENDER_NAME>
+    - GOTRUE_SMTP_ADMIN_EMAIL=<set:GOTRUE_SMTP_ADMIN_EMAIL>
+    - GOTRUE_MAILER_URLPATHS_INVITE=<redacted:GOTRUE_MAILER_URLPATHS_INVITE>
+    - GOTRUE_MAILER_URLPATHS_CONFIRMATION=<redacted:GOTRUE_MAILER_URLPATHS_CONFIRMATION>
+    - GOTRUE_MAILER_URLPATHS_RECOVERY=<redacted:GOTRUE_MAILER_URLPATHS_RECOVERY>
+    - GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE=<redacted:GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE>
+    - GOTRUE_EXTERNAL_PHONE_ENABLED=false
+    - GOTRUE_SMS_AUTOCONFIRM=false
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_rest:
+    image: postgrest/postgrest:v13.0.7
+    command:
+    - postgrest
+    networks:
+    - FilipeNet
+    environment:
+    - PGRST_DB_URI=<redacted:PGRST_DB_URI>
+    - PGRST_DB_SCHEMAS=<set:PGRST_DB_SCHEMAS>
+    - PGRST_DB_ANON_ROLE=<set:PGRST_DB_ANON_ROLE>
+    - PGRST_JWT_SECRET=<redacted:PGRST_JWT_SECRET>
+    - PGRST_APP_SETTINGS_JWT_SECRET=<redacted:PGRST_APP_SETTINGS_JWT_SECRET>
+    - PGRST_APP_SETTINGS_JWT_EXP=31536000
+    - PGRST_DB_USE_LEGACY_GUCS=false
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_realtime:
+    image: supabase/realtime:v2.63.0
+    networks:
+    - FilipeNet
+    dns:
+    - 127.0.0.11
+    environment:
+    - PORT=4000
+    - API_JWT_SECRET=<redacted:API_JWT_SECRET>
+    - SECRET_KEY_BASE=<redacted:SECRET_KEY_BASE>
+    - APP_NAME=<set:APP_NAME>
+    - DB_HOST=<set:DB_HOST>
+    - DB_PORT=5432
+    - DB_USER=<set:DB_USER>
+    - DB_PASSWORD=<redacted:DB_PASSWORD>
+    - DB_NAME=<set:DB_NAME>
+    - DB_AFTER_CONNECT_QUERY=<set:DB_AFTER_CONNECT_QUERY>
+    - DB_ENC_KEY=<redacted:DB_ENC_KEY>
+    - ERL_AFLAGS=<set:ERL_AFLAGS>
+    - DNS_NODES=<set:DNS_NODES>
+    - RLIMIT_NOFILE=10000
+    - SEED_SELF_HOST=true
+    - RUN_JANITOR=true
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_storage:
+    image: supabase/storage-api:v1.29.0
+    volumes:
+    - supabase_storage:/var/lib/storage:z
+    networks:
+    - FilipeNet
+    environment:
+    - ANON_KEY=<redacted:ANON_KEY>
+    - SERVICE_KEY=<redacted:SERVICE_KEY>
+    - POSTGREST_URL=<redacted:POSTGREST_URL>
+    - PGRST_JWT_SECRET=<redacted:PGRST_JWT_SECRET>
+    - DATABASE_URL=<redacted:DATABASE_URL>
+    - REQUEST_ALLOW_X_FORWARDED_PATH=true
+    - FILE_SIZE_LIMIT=52428800
+    - STORAGE_BACKEND=<set:STORAGE_BACKEND>
+    - GLOBAL_S3_BUCKET=<set:GLOBAL_S3_BUCKET>
+    - FILE_STORAGE_BACKEND_PATH=<set:FILE_STORAGE_BACKEND_PATH>
+    - REGION=<set:REGION>
+    - TENANT_ID=<set:TENANT_ID>
+    - ENABLE_IMAGE_TRANSFORMATION=true
+    - IMGPROXY_URL=<redacted:IMGPROXY_URL>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_imgproxy:
+    image: darthsim/imgproxy:v3.8.0
+    volumes:
+    - /root/supabase/docker/volumes/storage:/var/lib/storage:z
+    networks:
+    - FilipeNet
+    environment:
+    - IMGPROXY_BIND=<set:IMGPROXY_BIND>
+    - IMGPROXY_LOCAL_FILESYSTEM_ROOT=<set:IMGPROXY_LOCAL_FILESYSTEM_ROOT>
+    - IMGPROXY_USE_ETAG=true
+    - IMGPROXY_ENABLE_WEBP_DETECTION=true
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_meta:
+    image: supabase/postgres-meta:v0.93.1
+    networks:
+    - FilipeNet
+    environment:
+    - PG_META_PORT=8080
+    - PG_META_DB_HOST=<set:PG_META_DB_HOST>
+    - PG_META_DB_PORT=5432
+    - PG_META_DB_NAME=<set:PG_META_DB_NAME>
+    - PG_META_DB_USER=<set:PG_META_DB_USER>
+    - PG_META_DB_PASSWORD=<redacted:PG_META_DB_PASSWORD>
+    - CRYPTO_KEY=<redacted:CRYPTO_KEY>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_functions:
+    image: supabase/edge-runtime:v1.69.23
+    command:
+    - start
+    - --main-service
+    - /home/deno/functions/main
+    volumes:
+    - /root/supabase/docker/volumes/functions:/home/deno/functions:Z
+    networks:
+    - FilipeNet
+    environment:
+    - VERIFY_JWT=false
+    - JWT_SECRET=<redacted:JWT_SECRET>
+    - SUPABASE_URL=<redacted:SUPABASE_URL>
+    - SUPABASE_ANON_KEY=<redacted:SUPABASE_ANON_KEY>
+    - SUPABASE_SERVICE_ROLE_KEY=<redacted:SUPABASE_SERVICE_ROLE_KEY>
+    - SUPABASE_DB_URL=<redacted:SUPABASE_DB_URL>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_analytics:
+    image: supabase/logflare:1.22.6
+    networks:
+    - FilipeNet
+    environment:
+    - DB_USERNAME=<set:DB_USERNAME>
+    - DB_DATABASE=<set:DB_DATABASE>
+    - DB_HOSTNAME=<set:DB_HOSTNAME>
+    - DB_PORT=5432
+    - DB_PASSWORD=<redacted:DB_PASSWORD>
+    - DB_SCHEMA=<set:DB_SCHEMA>
+    - POSTGRES_BACKEND_URL=<redacted:POSTGRES_BACKEND_URL>
+    - POSTGRES_BACKEND_SCHEMA=<set:POSTGRES_BACKEND_SCHEMA>
+    - LOGFLARE_FEATURE_FLAG_OVERRIDE=<set:LOGFLARE_FEATURE_FLAG_OVERRIDE>
+    - LOGFLARE_NODE_HOST=<set:LOGFLARE_NODE_HOST>
+    - LOGFLARE_PUBLIC_ACCESS_TOKEN=<redacted:LOGFLARE_PUBLIC_ACCESS_TOKEN>
+    - LOGFLARE_PRIVATE_ACCESS_TOKEN=<redacted:LOGFLARE_PRIVATE_ACCESS_TOKEN>
+    - LOGFLARE_SINGLE_TENANT=true
+    - LOGFLARE_SUPABASE_MODE=true
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_db:
+    image: supabase/postgres:15.8.1.085
+    command:
+    - postgres
+    - -c
+    - config_file=/etc/postgresql/postgresql.conf
+    - -c
+    - log_min_messages=fatal
+    volumes:
+    - /root/supabase/docker/volumes/db/realtime.sql:/docker-entrypoint-initdb.d/migrations/99-realtime.sql:Z
+    - /root/supabase/docker/volumes/db/webhooks.sql:/docker-entrypoint-initdb.d/init-scripts/98-webhooks.sql:Z
+    - /root/supabase/docker/volumes/db/roles.sql:/docker-entrypoint-initdb.d/init-scripts/99-roles.sql:Z
+    - /root/supabase/docker/volumes/db/jwt.sql:/docker-entrypoint-initdb.d/init-scripts/99-jwt.sql:Z
+    - /root/supabase/docker/volumes/db/data:/var/lib/postgresql/data:Z
+    - /root/supabase/docker/volumes/db/_supabase.sql:/docker-entrypoint-initdb.d/migrations/97-_supabase.sql:Z
+    - /root/supabase/docker/volumes/db/logs.sql:/docker-entrypoint-initdb.d/migrations/99-logs.sql:Z
+    - /root/supabase/docker/volumes/db/pooler.sql:/docker-entrypoint-initdb.d/migrations/99-pooler.sql:Z
+    - supabase_db_config:/etc/postgresql-custom
+    networks:
+    - FilipeNet
+    environment:
+    - POSTGRES_HOST=<set:POSTGRES_HOST>
+    - PGPORT=5432
+    - POSTGRES_PORT=5432
+    - PGPASSWORD=<redacted:PGPASSWORD>
+    - POSTGRES_PASSWORD=<redacted:POSTGRES_PASSWORD>
+    - POSTGRES_DB=<set:POSTGRES_DB>
+    - PGDATABASE=<set:PGDATABASE>
+    - JWT_SECRET=<redacted:JWT_SECRET>
+    - JWT_EXP=31536000
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_vector:
+    image: timberio/vector:0.28.1-alpine
+    command:
+    - --config
+    - /etc/vector/vector.yml
+    volumes:
+    - /root/supabase/docker/volumes/logs/vector.yml:/etc/vector/vector.yml:ro,z
+    - /var/run/docker.sock:/var/run/docker.sock:ro,z
+    security_opt:
+    - label=disable
+    networks:
+    - FilipeNet
+    environment:
+    - LOGFLARE_PUBLIC_ACCESS_TOKEN=<redacted:LOGFLARE_PUBLIC_ACCESS_TOKEN>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+  supabase_supavisor:
+    image: supabase/supavisor:2.7.4
+    command:
+    - /bin/sh
+    - -c
+    - /app/bin/migrate && /app/bin/supavisor eval "$$(cat /etc/pooler/pooler.exs)" && /app/bin/server
+    volumes:
+    - /root/supabase/docker/volumes/pooler/pooler.exs:/etc/pooler/pooler.exs:ro,z
+    networks:
+    - FilipeNet
+    environment:
+    - POSTGRES_PORT=5432
+    - POSTGRES_DB=<set:POSTGRES_DB>
+    - POSTGRES_PASSWORD=<redacted:POSTGRES_PASSWORD>
+    - DATABASE_URL=<redacted:DATABASE_URL>
+    - CLUSTER_POSTGRES=true
+    - SECRET_KEY_BASE=<redacted:SECRET_KEY_BASE>
+    - VAULT_ENC_KEY=<redacted:VAULT_ENC_KEY>
+    - API_JWT_SECRET=<redacted:API_JWT_SECRET>
+    - METRICS_JWT_SECRET=<redacted:METRICS_JWT_SECRET>
+    - REGION=<set:REGION>
+    - ERL_AFLAGS=<set:ERL_AFLAGS>
+    - POOLER_TENANT_ID=1
+    - POOLER_DEFAULT_POOL_SIZE=20
+    - POOLER_MAX_CLIENT_CONN=100
+    - POOLER_POOL_MODE=<set:POOLER_POOL_MODE>
+    - DB_POOL_SIZE=5
+    - PORT=4000
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+volumes:
+  supabase_db_config:
+    external: true
+    name: supabase_db_config
+  supabase_storage:
+    external: true
+    name: supabase_storage
+networks:
+  FilipeNet:
+    external: true
+    name: FilipeNet

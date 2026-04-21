@@ -1,0 +1,911 @@
+[
+  {
+    "compose_id": "1",
+    "stack_name": "postgres",
+    "raw_private_path": "PRIVATE_BACKUP_ROOT/contabo/2026-04-21/portainer/compose/1/docker-compose.yml",
+    "sanitized_public_path": "docs/artefatos/portainer-stacks-sanitizadas/compose-1-postgres.sanitized.yml",
+    "raw_sha256": "143073ce35012197cc7304c514f8fe7267595d95062a54be55161ef09fb885ec",
+    "services": [
+      {
+        "service": "postgres",
+        "swarm_service": "postgres_postgres",
+        "image_in_compose": "postgres:14",
+        "image_running": "postgres:14",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "postgres_data:/var/lib/postgresql/data"
+        ],
+        "env_keys": [
+          "POSTGRES_PASSWORD",
+          "TZ"
+        ]
+      }
+    ],
+    "top_level_volumes": [
+      "postgres_data"
+    ],
+    "top_level_networks": [
+      "FilipeNet"
+    ],
+    "image_mismatches": []
+  },
+  {
+    "compose_id": "2",
+    "stack_name": "n8n",
+    "raw_private_path": "PRIVATE_BACKUP_ROOT/contabo/2026-04-21/portainer/compose/2/docker-compose.yml",
+    "sanitized_public_path": "docs/artefatos/portainer-stacks-sanitizadas/compose-2-n8n.sanitized.yml",
+    "raw_sha256": "c98ba9e7fc1d3cf2cdfeca3cabf48d7ee72c92d9371e1191237df2ba513ae8a8",
+    "services": [
+      {
+        "service": "n8n_editor",
+        "swarm_service": "n8n_n8n_editor",
+        "image_in_compose": "n8nio/n8n:latest",
+        "image_running": "n8nio/n8n:latest",
+        "hosts": [
+          "work.filipeivopereira.com"
+        ],
+        "ports": [],
+        "volumes": [],
+        "env_keys": [
+          "N8N_FIX_MIGRATIONS",
+          "DB_TYPE",
+          "DB_POSTGRESDB_DATABASE",
+          "DB_POSTGRESDB_HOST",
+          "DB_POSTGRESDB_PORT",
+          "DB_POSTGRESDB_USER",
+          "DB_POSTGRESDB_PASSWORD",
+          "N8N_ENCRYPTION_KEY",
+          "N8N_HOST",
+          "N8N_EDITOR_BASE_URL",
+          "WEBHOOK_URL",
+          "N8N_PROTOCOL",
+          "N8N_PROXY_HOPS",
+          "N8N_ONBOARDING_FLOW_DISABLED",
+          "N8N_BLOCK_ENV_ACCESS_IN_NODE",
+          "N8N_SKIP_AUTH_ON_OAUTH_CALLBACK",
+          "NODE_ENV",
+          "EXECUTIONS_MODE",
+          "EXECUTIONS_TIMEOUT",
+          "EXECUTIONS_TIMEOUT_MAX",
+          "OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS",
+          "N8N_RUNNERS_ENABLED",
+          "N8N_RUNNERS_MODE",
+          "N8N_RESTRICT_FILE_ACCESS_TO",
+          "NODES_EXCLUDE",
+          "N8N_REINSTALL_MISSING_PACKAGES",
+          "N8N_COMMUNITY_PACKAGES_ENABLED",
+          "N8N_NODE_PATH",
+          "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS",
+          "N8N_SMTP_SENDER",
+          "N8N_SMTP_USER",
+          "N8N_SMTP_PASS",
+          "N8N_SMTP_HOST",
+          "N8N_SMTP_PORT",
+          "N8N_SMTP_SSL",
+          "QUEUE_BULL_REDIS_HOST",
+          "QUEUE_BULL_REDIS_PORT",
+          "QUEUE_BULL_REDIS_DB",
+          "N8N_METRICS",
+          "EXECUTIONS_DATA_PRUNE",
+          "EXECUTIONS_DATA_MAX_AGE",
+          "N8N_AI_ENABLED",
+          "N8N_AI_PROVIDER",
+          "N8N_AI_OPENAI_API_KEY",
+          "NODE_FUNCTION_ALLOW_BUILTIN",
+          "NODE_FUNCTION_ALLOW_EXTERNAL",
+          "GENERIC_TIMEZONE",
+          "TZ"
+        ]
+      },
+      {
+        "service": "n8n_webhook",
+        "swarm_service": "n8n_n8n_webhook",
+        "image_in_compose": "n8nio/n8n:latest",
+        "image_running": "n8nio/n8n:latest",
+        "hosts": [
+          "webhook.filipeivopereira.com"
+        ],
+        "ports": [],
+        "volumes": [],
+        "env_keys": [
+          "N8N_FIX_MIGRATIONS",
+          "DB_TYPE",
+          "DB_POSTGRESDB_DATABASE",
+          "DB_POSTGRESDB_HOST",
+          "DB_POSTGRESDB_PORT",
+          "DB_POSTGRESDB_USER",
+          "DB_POSTGRESDB_PASSWORD",
+          "N8N_ENCRYPTION_KEY",
+          "N8N_HOST",
+          "N8N_EDITOR_BASE_URL",
+          "WEBHOOK_URL",
+          "N8N_PROTOCOL",
+          "N8N_PROXY_HOPS",
+          "N8N_ONBOARDING_FLOW_DISABLED",
+          "N8N_BLOCK_ENV_ACCESS_IN_NODE",
+          "N8N_SKIP_AUTH_ON_OAUTH_CALLBACK",
+          "NODE_ENV",
+          "EXECUTIONS_MODE",
+          "EXECUTIONS_TIMEOUT",
+          "EXECUTIONS_TIMEOUT_MAX",
+          "OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS",
+          "N8N_RUNNERS_ENABLED",
+          "N8N_RUNNERS_MODE",
+          "N8N_RESTRICT_FILE_ACCESS_TO",
+          "NODES_EXCLUDE",
+          "N8N_REINSTALL_MISSING_PACKAGES",
+          "N8N_COMMUNITY_PACKAGES_ENABLED",
+          "N8N_NODE_PATH",
+          "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS",
+          "N8N_SMTP_SENDER",
+          "N8N_SMTP_USER",
+          "N8N_SMTP_PASS",
+          "N8N_SMTP_HOST",
+          "N8N_SMTP_PORT",
+          "N8N_SMTP_SSL",
+          "QUEUE_BULL_REDIS_HOST",
+          "QUEUE_BULL_REDIS_PORT",
+          "QUEUE_BULL_REDIS_DB",
+          "N8N_METRICS",
+          "EXECUTIONS_DATA_PRUNE",
+          "EXECUTIONS_DATA_MAX_AGE",
+          "N8N_AI_ENABLED",
+          "N8N_AI_PROVIDER",
+          "N8N_AI_OPENAI_API_KEY",
+          "NODE_FUNCTION_ALLOW_BUILTIN",
+          "NODE_FUNCTION_ALLOW_EXTERNAL",
+          "GENERIC_TIMEZONE",
+          "TZ"
+        ]
+      },
+      {
+        "service": "n8n_worker",
+        "swarm_service": "n8n_n8n_worker",
+        "image_in_compose": "n8nio/n8n:latest",
+        "image_running": "n8nio/n8n:latest",
+        "hosts": [],
+        "ports": [],
+        "volumes": [],
+        "env_keys": [
+          "N8N_FIX_MIGRATIONS",
+          "DB_TYPE",
+          "DB_POSTGRESDB_DATABASE",
+          "DB_POSTGRESDB_HOST",
+          "DB_POSTGRESDB_PORT",
+          "DB_POSTGRESDB_USER",
+          "DB_POSTGRESDB_PASSWORD",
+          "N8N_ENCRYPTION_KEY",
+          "N8N_HOST",
+          "N8N_EDITOR_BASE_URL",
+          "WEBHOOK_URL",
+          "N8N_PROTOCOL",
+          "N8N_PROXY_HOPS",
+          "N8N_ONBOARDING_FLOW_DISABLED",
+          "N8N_BLOCK_ENV_ACCESS_IN_NODE",
+          "N8N_SKIP_AUTH_ON_OAUTH_CALLBACK",
+          "NODE_ENV",
+          "EXECUTIONS_MODE",
+          "EXECUTIONS_TIMEOUT",
+          "EXECUTIONS_TIMEOUT_MAX",
+          "OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS",
+          "N8N_RUNNERS_ENABLED",
+          "N8N_RUNNERS_MODE",
+          "N8N_RESTRICT_FILE_ACCESS_TO",
+          "NODES_EXCLUDE",
+          "N8N_REINSTALL_MISSING_PACKAGES",
+          "N8N_COMMUNITY_PACKAGES_ENABLED",
+          "N8N_NODE_PATH",
+          "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS",
+          "N8N_SMTP_SENDER",
+          "N8N_SMTP_USER",
+          "N8N_SMTP_PASS",
+          "N8N_SMTP_HOST",
+          "N8N_SMTP_PORT",
+          "N8N_SMTP_SSL",
+          "QUEUE_BULL_REDIS_HOST",
+          "QUEUE_BULL_REDIS_PORT",
+          "QUEUE_BULL_REDIS_DB",
+          "N8N_METRICS",
+          "EXECUTIONS_DATA_PRUNE",
+          "EXECUTIONS_DATA_MAX_AGE",
+          "N8N_AI_ENABLED",
+          "N8N_AI_PROVIDER",
+          "N8N_AI_OPENAI_API_KEY",
+          "NODE_FUNCTION_ALLOW_BUILTIN",
+          "NODE_FUNCTION_ALLOW_EXTERNAL",
+          "GENERIC_TIMEZONE",
+          "TZ"
+        ]
+      },
+      {
+        "service": "n8n_redis",
+        "swarm_service": "n8n_n8n_redis",
+        "image_in_compose": "redis:latest",
+        "image_running": "redis:latest",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "n8n_redis:/data"
+        ],
+        "env_keys": []
+      }
+    ],
+    "top_level_volumes": [
+      "n8n_redis"
+    ],
+    "top_level_networks": [
+      "FilipeNet"
+    ],
+    "image_mismatches": []
+  },
+  {
+    "compose_id": "6",
+    "stack_name": "supabase",
+    "raw_private_path": "PRIVATE_BACKUP_ROOT/contabo/2026-04-21/portainer/compose/6/docker-compose.yml",
+    "sanitized_public_path": "docs/artefatos/portainer-stacks-sanitizadas/compose-6-supabase.sanitized.yml",
+    "raw_sha256": "47260bd624baf24e3e6b13ae85d0492ea2e58474687b368abda37b0d91acaba2",
+    "services": [
+      {
+        "service": "supabase_studio",
+        "swarm_service": "supabase_supabase_studio",
+        "image_in_compose": "supabase/studio:2026.01.27-sha-2a37755",
+        "image_running": "supabase/studio:2025.11.10-sha-5291fe3",
+        "hosts": [],
+        "ports": [],
+        "volumes": [],
+        "env_keys": [
+          "HOSTNAME",
+          "SUPABASE_URL",
+          "SUPABASE_PUBLIC_URL",
+          "SUPABASE_ANON_KEY",
+          "SUPABASE_SERVICE_KEY",
+          "AUTH_JWT_SECRET",
+          "DEFAULT_ORGANIZATION_NAME",
+          "DEFAULT_PROJECT_NAME",
+          "POSTGRES_DB",
+          "POSTGRES_HOST",
+          "POSTGRES_PORT",
+          "POSTGRES_PASSWORD",
+          "PG_META_CRYPTO_KEY",
+          "LOGFLARE_URL",
+          "LOGFLARE_API_KEY",
+          "LOGFLARE_PUBLIC_ACCESS_TOKEN",
+          "LOGFLARE_PRIVATE_ACCESS_TOKEN",
+          "NEXT_PUBLIC_ENABLE_LOGS",
+          "NEXT_ANALYTICS_BACKEND_PROVIDER",
+          "DEBUG",
+          "STUDIO_PG_META_URL",
+          "OPENAI_API_KEY"
+        ]
+      },
+      {
+        "service": "supabase_kong",
+        "swarm_service": "supabase_supabase_kong",
+        "image_in_compose": "kong:2.8.1",
+        "image_running": "kong:2.8.1",
+        "hosts": [
+          "supabase.filipeivopereira.com"
+        ],
+        "ports": [],
+        "volumes": [
+          "/root/supabase/docker/volumes/api/kong.yml:/home/kong/temp.yml:ro,z"
+        ],
+        "env_keys": [
+          "DASHBOARD_USERNAME",
+          "DASHBOARD_PASSWORD",
+          "JWT_SECRET",
+          "SUPABASE_ANON_KEY",
+          "SUPABASE_SERVICE_KEY",
+          "KONG_DATABASE",
+          "KONG_DECLARATIVE_CONFIG",
+          "KONG_DNS_ORDER",
+          "KONG_PLUGINS",
+          "KONG_NGINX_PROXY_PROXY_BUFFER_SIZE",
+          "KONG_NGINX_PROXY_PROXY_BUFFERS"
+        ]
+      },
+      {
+        "service": "supabase_auth",
+        "swarm_service": "supabase_supabase_auth",
+        "image_in_compose": "supabase/gotrue:v2.182.1",
+        "image_running": "supabase/gotrue:v2.182.1",
+        "hosts": [],
+        "ports": [],
+        "volumes": [],
+        "env_keys": [
+          "GOTRUE_API_HOST",
+          "GOTRUE_API_PORT",
+          "API_EXTERNAL_URL",
+          "GOTRUE_DB_DRIVER",
+          "GOTRUE_DB_DATABASE_URL",
+          "GOTRUE_JWT_ADMIN_ROLES",
+          "GOTRUE_JWT_AUD",
+          "GOTRUE_JWT_DEFAULT_GROUP_NAME",
+          "GOTRUE_JWT_EXP",
+          "GOTRUE_JWT_SECRET",
+          "GOTRUE_EXTERNAL_EMAIL_ENABLED",
+          "GOTRUE_EXTERNAL_ANONYMOUS_USERS_ENABLED",
+          "GOTRUE_MAILER_AUTOCONFIRM",
+          "GOTRUE_EXTERNAL_SKIP_NONCE_CHECK",
+          "GOTRUE_MAILER_SECURE_EMAIL_CHANGE_ENABLED",
+          "GOTRUE_SMTP_MAX_FREQUENCY",
+          "GOTRUE_SITE_URL",
+          "GOTRUE_URI_ALLOW_LIST",
+          "GOTRUE_DISABLE_SIGNUP",
+          "GOTRUE_SMTP_HOST",
+          "GOTRUE_SMTP_PORT",
+          "GOTRUE_SMTP_USER",
+          "GOTRUE_SMTP_PASS",
+          "GOTRUE_SMTP_SENDER_NAME",
+          "GOTRUE_SMTP_ADMIN_EMAIL",
+          "GOTRUE_MAILER_URLPATHS_INVITE",
+          "GOTRUE_MAILER_URLPATHS_CONFIRMATION",
+          "GOTRUE_MAILER_URLPATHS_RECOVERY",
+          "GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE",
+          "GOTRUE_EXTERNAL_PHONE_ENABLED",
+          "GOTRUE_SMS_AUTOCONFIRM"
+        ]
+      },
+      {
+        "service": "supabase_rest",
+        "swarm_service": "supabase_supabase_rest",
+        "image_in_compose": "postgrest/postgrest:v13.0.7",
+        "image_running": "postgrest/postgrest:v13.0.7",
+        "hosts": [],
+        "ports": [],
+        "volumes": [],
+        "env_keys": [
+          "PGRST_DB_URI",
+          "PGRST_DB_SCHEMAS",
+          "PGRST_DB_ANON_ROLE",
+          "PGRST_JWT_SECRET",
+          "PGRST_APP_SETTINGS_JWT_SECRET",
+          "PGRST_APP_SETTINGS_JWT_EXP",
+          "PGRST_DB_USE_LEGACY_GUCS"
+        ]
+      },
+      {
+        "service": "supabase_realtime",
+        "swarm_service": "supabase_supabase_realtime",
+        "image_in_compose": "supabase/realtime:v2.63.0",
+        "image_running": "supabase/realtime:v2.63.0",
+        "hosts": [],
+        "ports": [],
+        "volumes": [],
+        "env_keys": [
+          "PORT",
+          "API_JWT_SECRET",
+          "SECRET_KEY_BASE",
+          "APP_NAME",
+          "DB_HOST",
+          "DB_PORT",
+          "DB_USER",
+          "DB_PASSWORD",
+          "DB_NAME",
+          "DB_AFTER_CONNECT_QUERY",
+          "DB_ENC_KEY",
+          "ERL_AFLAGS",
+          "DNS_NODES",
+          "RLIMIT_NOFILE",
+          "SEED_SELF_HOST",
+          "RUN_JANITOR"
+        ]
+      },
+      {
+        "service": "supabase_storage",
+        "swarm_service": "supabase_supabase_storage",
+        "image_in_compose": "supabase/storage-api:v1.29.0",
+        "image_running": "supabase/storage-api:v1.29.0",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "supabase_storage:/var/lib/storage:z"
+        ],
+        "env_keys": [
+          "ANON_KEY",
+          "SERVICE_KEY",
+          "POSTGREST_URL",
+          "PGRST_JWT_SECRET",
+          "DATABASE_URL",
+          "REQUEST_ALLOW_X_FORWARDED_PATH",
+          "FILE_SIZE_LIMIT",
+          "STORAGE_BACKEND",
+          "GLOBAL_S3_BUCKET",
+          "FILE_STORAGE_BACKEND_PATH",
+          "REGION",
+          "TENANT_ID",
+          "ENABLE_IMAGE_TRANSFORMATION",
+          "IMGPROXY_URL"
+        ]
+      },
+      {
+        "service": "supabase_imgproxy",
+        "swarm_service": "supabase_supabase_imgproxy",
+        "image_in_compose": "darthsim/imgproxy:v3.8.0",
+        "image_running": "darthsim/imgproxy:v3.8.0",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "/root/supabase/docker/volumes/storage:/var/lib/storage:z"
+        ],
+        "env_keys": [
+          "IMGPROXY_BIND",
+          "IMGPROXY_LOCAL_FILESYSTEM_ROOT",
+          "IMGPROXY_USE_ETAG",
+          "IMGPROXY_ENABLE_WEBP_DETECTION"
+        ]
+      },
+      {
+        "service": "supabase_meta",
+        "swarm_service": "supabase_supabase_meta",
+        "image_in_compose": "supabase/postgres-meta:v0.93.1",
+        "image_running": "supabase/postgres-meta:v0.93.1",
+        "hosts": [],
+        "ports": [],
+        "volumes": [],
+        "env_keys": [
+          "PG_META_PORT",
+          "PG_META_DB_HOST",
+          "PG_META_DB_PORT",
+          "PG_META_DB_NAME",
+          "PG_META_DB_USER",
+          "PG_META_DB_PASSWORD",
+          "CRYPTO_KEY"
+        ]
+      },
+      {
+        "service": "supabase_functions",
+        "swarm_service": "supabase_supabase_functions",
+        "image_in_compose": "supabase/edge-runtime:v1.69.23",
+        "image_running": "supabase/edge-runtime:v1.69.23",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "/root/supabase/docker/volumes/functions:/home/deno/functions:Z"
+        ],
+        "env_keys": [
+          "VERIFY_JWT",
+          "JWT_SECRET",
+          "SUPABASE_URL",
+          "SUPABASE_ANON_KEY",
+          "SUPABASE_SERVICE_ROLE_KEY",
+          "SUPABASE_DB_URL"
+        ]
+      },
+      {
+        "service": "supabase_analytics",
+        "swarm_service": "supabase_supabase_analytics",
+        "image_in_compose": "supabase/logflare:1.22.6",
+        "image_running": "supabase/logflare:1.22.6",
+        "hosts": [],
+        "ports": [],
+        "volumes": [],
+        "env_keys": [
+          "DB_USERNAME",
+          "DB_DATABASE",
+          "DB_HOSTNAME",
+          "DB_PORT",
+          "DB_PASSWORD",
+          "DB_SCHEMA",
+          "POSTGRES_BACKEND_URL",
+          "POSTGRES_BACKEND_SCHEMA",
+          "LOGFLARE_FEATURE_FLAG_OVERRIDE",
+          "LOGFLARE_NODE_HOST",
+          "LOGFLARE_PUBLIC_ACCESS_TOKEN",
+          "LOGFLARE_PRIVATE_ACCESS_TOKEN",
+          "LOGFLARE_SINGLE_TENANT",
+          "LOGFLARE_SUPABASE_MODE"
+        ]
+      },
+      {
+        "service": "supabase_db",
+        "swarm_service": "supabase_supabase_db",
+        "image_in_compose": "supabase/postgres:15.8.1.085",
+        "image_running": "supabase/postgres:15.8.1.085",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "/root/supabase/docker/volumes/db/realtime.sql:/docker-entrypoint-initdb.d/migrations/99-realtime.sql:Z",
+          "/root/supabase/docker/volumes/db/webhooks.sql:/docker-entrypoint-initdb.d/init-scripts/98-webhooks.sql:Z",
+          "/root/supabase/docker/volumes/db/roles.sql:/docker-entrypoint-initdb.d/init-scripts/99-roles.sql:Z",
+          "/root/supabase/docker/volumes/db/jwt.sql:/docker-entrypoint-initdb.d/init-scripts/99-jwt.sql:Z",
+          "/root/supabase/docker/volumes/db/data:/var/lib/postgresql/data:Z",
+          "/root/supabase/docker/volumes/db/_supabase.sql:/docker-entrypoint-initdb.d/migrations/97-_supabase.sql:Z",
+          "/root/supabase/docker/volumes/db/logs.sql:/docker-entrypoint-initdb.d/migrations/99-logs.sql:Z",
+          "/root/supabase/docker/volumes/db/pooler.sql:/docker-entrypoint-initdb.d/migrations/99-pooler.sql:Z",
+          "supabase_db_config:/etc/postgresql-custom"
+        ],
+        "env_keys": [
+          "POSTGRES_HOST",
+          "PGPORT",
+          "POSTGRES_PORT",
+          "PGPASSWORD",
+          "POSTGRES_PASSWORD",
+          "POSTGRES_DB",
+          "PGDATABASE",
+          "JWT_SECRET",
+          "JWT_EXP"
+        ]
+      },
+      {
+        "service": "supabase_vector",
+        "swarm_service": "supabase_supabase_vector",
+        "image_in_compose": "timberio/vector:0.28.1-alpine",
+        "image_running": "timberio/vector:0.28.1-alpine",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "/root/supabase/docker/volumes/logs/vector.yml:/etc/vector/vector.yml:ro,z",
+          "/var/run/docker.sock:/var/run/docker.sock:ro,z"
+        ],
+        "env_keys": [
+          "LOGFLARE_PUBLIC_ACCESS_TOKEN"
+        ]
+      },
+      {
+        "service": "supabase_supavisor",
+        "swarm_service": "supabase_supabase_supavisor",
+        "image_in_compose": "supabase/supavisor:2.7.4",
+        "image_running": "supabase/supavisor:2.7.4",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "/root/supabase/docker/volumes/pooler/pooler.exs:/etc/pooler/pooler.exs:ro,z"
+        ],
+        "env_keys": [
+          "POSTGRES_PORT",
+          "POSTGRES_DB",
+          "POSTGRES_PASSWORD",
+          "DATABASE_URL",
+          "CLUSTER_POSTGRES",
+          "SECRET_KEY_BASE",
+          "VAULT_ENC_KEY",
+          "API_JWT_SECRET",
+          "METRICS_JWT_SECRET",
+          "REGION",
+          "ERL_AFLAGS",
+          "POOLER_TENANT_ID",
+          "POOLER_DEFAULT_POOL_SIZE",
+          "POOLER_MAX_CLIENT_CONN",
+          "POOLER_POOL_MODE",
+          "DB_POOL_SIZE",
+          "PORT"
+        ]
+      }
+    ],
+    "top_level_volumes": [
+      "supabase_db_config",
+      "supabase_storage"
+    ],
+    "top_level_networks": [
+      "FilipeNet"
+    ],
+    "image_mismatches": [
+      {
+        "service": "supabase_supabase_studio",
+        "compose_image": "supabase/studio:2026.01.27-sha-2a37755",
+        "running_image": "supabase/studio:2025.11.10-sha-5291fe3"
+      }
+    ]
+  },
+  {
+    "compose_id": "7",
+    "stack_name": "evolution",
+    "raw_private_path": "PRIVATE_BACKUP_ROOT/contabo/2026-04-21/portainer/compose/7/docker-compose.yml",
+    "sanitized_public_path": "docs/artefatos/portainer-stacks-sanitizadas/compose-7-evolution.sanitized.yml",
+    "raw_sha256": "b39e83732a4545a9be4d01ec927fddc4e5dc7f869f46e3ff27aee5312a93e77f",
+    "services": [
+      {
+        "service": "evolution_api",
+        "swarm_service": "evolution_evolution_api",
+        "image_in_compose": "evoapicloud/evolution-api:latest",
+        "image_running": "evoapicloud/evolution-api:latest",
+        "hosts": [
+          "evolution.filipeivopereira.com"
+        ],
+        "ports": [],
+        "volumes": [
+          "evolution_instances:/evolution/instances"
+        ],
+        "env_keys": [
+          "SERVER_URL",
+          "AUTHENTICATION_API_KEY",
+          "AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES",
+          "DEL_INSTANCE",
+          "QRCODE_LIMIT",
+          "LANGUAGE",
+          "CONFIG_SESSION_PHONE_CLIENT",
+          "CONFIG_SESSION_PHONE_NAME",
+          "DATABASE_ENABLED",
+          "DATABASE_PROVIDER",
+          "DATABASE_CONNECTION_URI",
+          "DATABASE_CONNECTION_CLIENT_NAME",
+          "DATABASE_SAVE_DATA_INSTANCE",
+          "DATABASE_SAVE_DATA_NEW_MESSAGE",
+          "DATABASE_SAVE_MESSAGE_UPDATE",
+          "DATABASE_SAVE_DATA_CONTACTS",
+          "DATABASE_SAVE_DATA_CHATS",
+          "DATABASE_SAVE_DATA_LABELS",
+          "DATABASE_SAVE_DATA_HISTORIC",
+          "N8N_ENABLED",
+          "EVOAI_ENABLED",
+          "OPENAI_ENABLED",
+          "DIFY_ENABLED",
+          "TYPEBOT_ENABLED",
+          "TYPEBOT_API_VERSION",
+          "CHATWOOT_ENABLED",
+          "CHATWOOT_MESSAGE_READ",
+          "CHATWOOT_MESSAGE_DELETE",
+          "CHATWOOT_IMPORT_DATABASE_CONNECTION_URI",
+          "CHATWOOT_IMPORT_PLACEHOLDER_MEDIA_MESSAGE",
+          "CACHE_REDIS_ENABLED",
+          "CACHE_REDIS_URI",
+          "CACHE_REDIS_PREFIX_KEY",
+          "CACHE_REDIS_SAVE_INSTANCES",
+          "CACHE_LOCAL_ENABLED",
+          "S3_ENABLED",
+          "S3_ACCESS_KEY",
+          "S3_SECRET_KEY",
+          "S3_BUCKET",
+          "S3_PORT",
+          "S3_ENDPOINT",
+          "S3_USE_SSL",
+          "WA_BUSINESS_TOKEN_WEBHOOK",
+          "WA_BUSINESS_URL",
+          "WA_BUSINESS_VERSION",
+          "WA_BUSINESS_LANGUAGE",
+          "TELEMETRY",
+          "TELEMETRY_URL",
+          "WEBSOCKET_ENABLED",
+          "WEBSOCKET_GLOBAL_EVENTS",
+          "SQS_ENABLED",
+          "SQS_ACCESS_KEY_ID",
+          "SQS_SECRET_ACCESS_KEY",
+          "SQS_ACCOUNT_ID",
+          "SQS_REGION",
+          "RABBITMQ_ENABLED",
+          "RABBITMQ_FRAME_MAX",
+          "RABBITMQ_URI",
+          "RABBITMQ_EXCHANGE_NAME",
+          "RABBITMQ_GLOBAL_ENABLED",
+          "RABBITMQ_EVENTS_APPLICATION_STARTUP",
+          "RABBITMQ_EVENTS_INSTANCE_CREATE",
+          "RABBITMQ_EVENTS_INSTANCE_DELETE",
+          "RABBITMQ_EVENTS_QRCODE_UPDATED",
+          "RABBITMQ_EVENTS_SEND_MESSAGE_UPDATE",
+          "RABBITMQ_EVENTS_MESSAGES_SET",
+          "RABBITMQ_EVENTS_MESSAGES_UPSERT",
+          "RABBITMQ_EVENTS_MESSAGES_EDITED",
+          "RABBITMQ_EVENTS_MESSAGES_UPDATE",
+          "RABBITMQ_EVENTS_MESSAGES_DELETE",
+          "RABBITMQ_EVENTS_SEND_MESSAGE",
+          "RABBITMQ_EVENTS_CONTACTS_SET",
+          "RABBITMQ_EVENTS_CONTACTS_UPSERT",
+          "RABBITMQ_EVENTS_CONTACTS_UPDATE",
+          "RABBITMQ_EVENTS_PRESENCE_UPDATE",
+          "RABBITMQ_EVENTS_CHATS_SET",
+          "RABBITMQ_EVENTS_CHATS_UPSERT",
+          "RABBITMQ_EVENTS_CHATS_UPDATE",
+          "RABBITMQ_EVENTS_CHATS_DELETE",
+          "RABBITMQ_EVENTS_GROUPS_UPSERT",
+          "RABBITMQ_EVENTS_GROUP_UPDATE",
+          "RABBITMQ_EVENTS_GROUP_PARTICIPANTS_UPDATE",
+          "RABBITMQ_EVENTS_CONNECTION_UPDATE",
+          "RABBITMQ_EVENTS_CALL",
+          "RABBITMQ_EVENTS_TYPEBOT_START",
+          "RABBITMQ_EVENTS_TYPEBOT_CHANGE_STATUS",
+          "WEBHOOK_GLOBAL_ENABLED",
+          "WEBHOOK_GLOBAL_URL",
+          "WEBHOOK_GLOBAL_WEBHOOK_BY_EVENTS",
+          "WEBHOOK_EVENTS_APPLICATION_STARTUP",
+          "WEBHOOK_EVENTS_QRCODE_UPDATED",
+          "WEBHOOK_EVENTS_MESSAGES_SET",
+          "WEBHOOK_EVENTS_SEND_MESSAGE_UPDATE",
+          "WEBHOOK_EVENTS_MESSAGES_UPSERT",
+          "WEBHOOK_EVENTS_MESSAGES_EDITED",
+          "WEBHOOK_EVENTS_MESSAGES_UPDATE",
+          "WEBHOOK_EVENTS_MESSAGES_DELETE",
+          "WEBHOOK_EVENTS_SEND_MESSAGE",
+          "WEBHOOK_EVENTS_CONTACTS_SET",
+          "WEBHOOK_EVENTS_CONTACTS_UPSERT",
+          "WEBHOOK_EVENTS_CONTACTS_UPDATE",
+          "WEBHOOK_EVENTS_PRESENCE_UPDATE",
+          "WEBHOOK_EVENTS_CHATS_SET",
+          "WEBHOOK_EVENTS_CHATS_UPSERT",
+          "WEBHOOK_EVENTS_CHATS_UPDATE",
+          "WEBHOOK_EVENTS_CHATS_DELETE",
+          "WEBHOOK_EVENTS_GROUPS_UPSERT",
+          "WEBHOOK_EVENTS_GROUPS_UPDATE",
+          "WEBHOOK_EVENTS_GROUP_PARTICIPANTS_UPDATE",
+          "WEBHOOK_EVENTS_CONNECTION_UPDATE",
+          "WEBHOOK_EVENTS_LABELS_EDIT",
+          "WEBHOOK_EVENTS_LABELS_ASSOCIATION",
+          "WEBHOOK_EVENTS_CALL",
+          "WEBHOOK_EVENTS_TYPEBOT_START",
+          "WEBHOOK_EVENTS_TYPEBOT_CHANGE_STATUS",
+          "WEBHOOK_EVENTS_ERRORS",
+          "WEBHOOK_EVENTS_ERRORS_WEBHOOK",
+          "WEBHOOK_REQUEST_TIMEOUT_MS",
+          "WEBHOOK_RETRY_MAX_ATTEMPTS",
+          "WEBHOOK_RETRY_INITIAL_DELAY_SECONDS",
+          "WEBHOOK_RETRY_USE_EXPONENTIAL_BACKOFF",
+          "WEBHOOK_RETRY_MAX_DELAY_SECONDS",
+          "WEBHOOK_RETRY_JITTER_FACTOR",
+          "WEBHOOK_RETRY_NON_RETRYABLE_STATUS_CODES",
+          "PROVIDER_ENABLED",
+          "PROVIDER_HOST",
+          "PROVIDER_PORT",
+          "PROVIDER_PREFIX"
+        ]
+      },
+      {
+        "service": "evolution_redis",
+        "swarm_service": "evolution_evolution_redis",
+        "image_in_compose": "redis:latest",
+        "image_running": "redis:latest",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "evolution_redis:/data"
+        ],
+        "env_keys": []
+      }
+    ],
+    "top_level_volumes": [
+      "evolution_instances",
+      "evolution_redis"
+    ],
+    "top_level_networks": [
+      "FilipeNet"
+    ],
+    "image_mismatches": []
+  },
+  {
+    "compose_id": "8",
+    "stack_name": "minio",
+    "raw_private_path": "PRIVATE_BACKUP_ROOT/contabo/2026-04-21/portainer/compose/8/docker-compose.yml",
+    "sanitized_public_path": "docs/artefatos/portainer-stacks-sanitizadas/compose-8-minio.sanitized.yml",
+    "raw_sha256": "d8a87e7d4b3d04262c716880f245114fef2cc906ec18afada606516eba75628c",
+    "services": [
+      {
+        "service": "minio",
+        "swarm_service": "minio_minio",
+        "image_in_compose": "quay.io/minio/minio:latest",
+        "image_running": "quay.io/minio/minio:latest",
+        "hosts": [
+          "minio.filipeivopereira.com",
+          "s3.filipeivopereira.com"
+        ],
+        "ports": [],
+        "volumes": [
+          "minio_data:/data"
+        ],
+        "env_keys": [
+          "MINIO_ROOT_USER",
+          "MINIO_ROOT_PASSWORD",
+          "MINIO_BROWSER_REDIRECT_URL",
+          "MINIO_SERVER_URL",
+          "MINIO_REGION_NAME"
+        ]
+      }
+    ],
+    "top_level_volumes": [
+      "minio_data"
+    ],
+    "top_level_networks": [
+      "FilipeNet"
+    ],
+    "image_mismatches": []
+  },
+  {
+    "compose_id": "10",
+    "stack_name": "directus",
+    "raw_private_path": "PRIVATE_BACKUP_ROOT/contabo/2026-04-21/portainer/compose/10/docker-compose.yml",
+    "sanitized_public_path": "docs/artefatos/portainer-stacks-sanitizadas/compose-10-directus.sanitized.yml",
+    "raw_sha256": "4ef1b4a4d08633480af14d25c4ed85001820d31b526551f0ba9161d2e8103014",
+    "services": [
+      {
+        "service": "directus_app",
+        "swarm_service": "directus_directus_app",
+        "image_in_compose": "directus/directus:11.15.0",
+        "image_running": "directus/directus:11.15.0",
+        "hosts": [
+          "directus.filipeivopereira.com"
+        ],
+        "ports": [],
+        "volumes": [
+          "directus_uploads:/directus/uploads",
+          "directus_data:/directus/database"
+        ],
+        "env_keys": [
+          "ADMIN_EMAIL",
+          "ADMIN_PASSWORD",
+          "PUBLIC_URL",
+          "EMAIL_SMTP_USER",
+          "EMAIL_SMTP_PASSWORD",
+          "EMAIL_SMTP_HOST",
+          "EMAIL_SMTP_PORT",
+          "EMAIL_SMTP_SECURE",
+          "STORAGE_LOCATIONS",
+          "STORAGE_S3_DRIVER",
+          "STORAGE_S3_KEY",
+          "STORAGE_S3_SECRET",
+          "STORAGE_S3_BUCKET",
+          "STORAGE_S3_REGION",
+          "STORAGE_S3_ENDPOINT",
+          "CACHE_ENABLED",
+          "CACHE_AUTO_PURGE",
+          "CACHE_STORE",
+          "REDIS",
+          "KEY",
+          "SECRET",
+          "APP_ENV",
+          "AI_MCP_ENABLED",
+          "DB_CLIENT",
+          "DB_HOST",
+          "DB_PORT",
+          "DB_DATABASE",
+          "DB_USER",
+          "DB_PASSWORD",
+          "DB_CONNECTION_STRING",
+          "DB_PREFIX"
+        ]
+      },
+      {
+        "service": "directus_redis",
+        "swarm_service": "directus_directus_redis",
+        "image_in_compose": "redis:latest",
+        "image_running": "redis:latest",
+        "hosts": [],
+        "ports": [],
+        "volumes": [
+          "directus_redis:/data"
+        ],
+        "env_keys": []
+      }
+    ],
+    "top_level_volumes": [
+      "directus_data",
+      "directus_redis",
+      "directus_uploads"
+    ],
+    "top_level_networks": [
+      "FilipeNet"
+    ],
+    "image_mismatches": []
+  },
+  {
+    "compose_id": "11",
+    "stack_name": "pgadmin",
+    "raw_private_path": "PRIVATE_BACKUP_ROOT/contabo/2026-04-21/portainer/compose/11/docker-compose.yml",
+    "sanitized_public_path": "docs/artefatos/portainer-stacks-sanitizadas/compose-11-pgadmin.sanitized.yml",
+    "raw_sha256": "533373289e44c08a92ff89e92499731f50dd45ace13c757b119bdbb14d5230ea",
+    "services": [
+      {
+        "service": "pgadmin",
+        "swarm_service": "pgadmin_pgadmin",
+        "image_in_compose": "dpage/pgadmin4:latest",
+        "image_running": "dpage/pgadmin4:latest",
+        "hosts": [
+          "pgadmin.filipeivopereira.com"
+        ],
+        "ports": [],
+        "volumes": [
+          "pgadmin_data:/var/lib/pgadmin"
+        ],
+        "env_keys": [
+          "PGADMIN_DEFAULT_EMAIL",
+          "PGADMIN_DEFAULT_PASSWORD"
+        ]
+      }
+    ],
+    "top_level_volumes": [
+      "pgadmin_data"
+    ],
+    "top_level_networks": [
+      "FilipeNet"
+    ],
+    "image_mismatches": []
+  }
+]

@@ -1,0 +1,187 @@
+# Sanitized snapshot generated from Portainer compose backup
+# compose_id: 7
+# stack_name: evolution
+# Sensitive values were replaced with placeholders.
+version: '3.7'
+services:
+  evolution_api:
+    image: evoapicloud/evolution-api:latest
+    volumes:
+    - evolution_instances:/evolution/instances
+    networks:
+    - FilipeNet
+    environment:
+    - SERVER_URL=<redacted:SERVER_URL>
+    - AUTHENTICATION_API_KEY=<redacted:AUTHENTICATION_API_KEY>
+    - AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES=true
+    - DEL_INSTANCE=false
+    - QRCODE_LIMIT=1902
+    - LANGUAGE=<set:LANGUAGE>
+    - CONFIG_SESSION_PHONE_CLIENT=<set:CONFIG_SESSION_PHONE_CLIENT>
+    - CONFIG_SESSION_PHONE_NAME=<set:CONFIG_SESSION_PHONE_NAME>
+    - DATABASE_ENABLED=true
+    - DATABASE_PROVIDER=<set:DATABASE_PROVIDER>
+    - DATABASE_CONNECTION_URI=<redacted:DATABASE_CONNECTION_URI>
+    - DATABASE_CONNECTION_CLIENT_NAME=<set:DATABASE_CONNECTION_CLIENT_NAME>
+    - DATABASE_SAVE_DATA_INSTANCE=true
+    - DATABASE_SAVE_DATA_NEW_MESSAGE=true
+    - DATABASE_SAVE_MESSAGE_UPDATE=true
+    - DATABASE_SAVE_DATA_CONTACTS=true
+    - DATABASE_SAVE_DATA_CHATS=true
+    - DATABASE_SAVE_DATA_LABELS=true
+    - DATABASE_SAVE_DATA_HISTORIC=true
+    - N8N_ENABLED=true
+    - EVOAI_ENABLED=true
+    - OPENAI_ENABLED=true
+    - DIFY_ENABLED=true
+    - TYPEBOT_ENABLED=true
+    - TYPEBOT_API_VERSION=<set:TYPEBOT_API_VERSION>
+    - CHATWOOT_ENABLED=true
+    - CHATWOOT_MESSAGE_READ=true
+    - CHATWOOT_MESSAGE_DELETE=true
+    - CHATWOOT_IMPORT_DATABASE_CONNECTION_URI=<redacted:CHATWOOT_IMPORT_DATABASE_CONNECTION_URI>
+    - CHATWOOT_IMPORT_PLACEHOLDER_MEDIA_MESSAGE=false
+    - CACHE_REDIS_ENABLED=true
+    - CACHE_REDIS_URI=<redacted:CACHE_REDIS_URI>
+    - CACHE_REDIS_PREFIX_KEY=<redacted:CACHE_REDIS_PREFIX_KEY>
+    - CACHE_REDIS_SAVE_INSTANCES=false
+    - CACHE_LOCAL_ENABLED=false
+    - S3_ENABLED=false
+    - S3_ACCESS_KEY=<empty>
+    - S3_SECRET_KEY=<empty>
+    - S3_BUCKET=<set:S3_BUCKET>
+    - S3_PORT=443
+    - S3_ENDPOINT=<empty>
+    - S3_USE_SSL=true
+    - WA_BUSINESS_TOKEN_WEBHOOK=<redacted:WA_BUSINESS_TOKEN_WEBHOOK>
+    - WA_BUSINESS_URL=<redacted:WA_BUSINESS_URL>
+    - WA_BUSINESS_VERSION=<set:WA_BUSINESS_VERSION>
+    - WA_BUSINESS_LANGUAGE=<set:WA_BUSINESS_LANGUAGE>
+    - TELEMETRY=false
+    - TELEMETRY_URL=<empty>
+    - WEBSOCKET_ENABLED=false
+    - WEBSOCKET_GLOBAL_EVENTS=false
+    - SQS_ENABLED=false
+    - SQS_ACCESS_KEY_ID=<empty>
+    - SQS_SECRET_ACCESS_KEY=<empty>
+    - SQS_ACCOUNT_ID=<empty>
+    - SQS_REGION=<empty>
+    - RABBITMQ_ENABLED=false
+    - RABBITMQ_FRAME_MAX=8192
+    - RABBITMQ_URI=<redacted:RABBITMQ_URI>
+    - RABBITMQ_EXCHANGE_NAME=<set:RABBITMQ_EXCHANGE_NAME>
+    - RABBITMQ_GLOBAL_ENABLED=false
+    - RABBITMQ_EVENTS_APPLICATION_STARTUP=false
+    - RABBITMQ_EVENTS_INSTANCE_CREATE=false
+    - RABBITMQ_EVENTS_INSTANCE_DELETE=false
+    - RABBITMQ_EVENTS_QRCODE_UPDATED=false
+    - RABBITMQ_EVENTS_SEND_MESSAGE_UPDATE=false
+    - RABBITMQ_EVENTS_MESSAGES_SET=false
+    - RABBITMQ_EVENTS_MESSAGES_UPSERT=true
+    - RABBITMQ_EVENTS_MESSAGES_EDITED=false
+    - RABBITMQ_EVENTS_MESSAGES_UPDATE=false
+    - RABBITMQ_EVENTS_MESSAGES_DELETE=false
+    - RABBITMQ_EVENTS_SEND_MESSAGE=false
+    - RABBITMQ_EVENTS_CONTACTS_SET=false
+    - RABBITMQ_EVENTS_CONTACTS_UPSERT=false
+    - RABBITMQ_EVENTS_CONTACTS_UPDATE=false
+    - RABBITMQ_EVENTS_PRESENCE_UPDATE=false
+    - RABBITMQ_EVENTS_CHATS_SET=false
+    - RABBITMQ_EVENTS_CHATS_UPSERT=false
+    - RABBITMQ_EVENTS_CHATS_UPDATE=false
+    - RABBITMQ_EVENTS_CHATS_DELETE=false
+    - RABBITMQ_EVENTS_GROUPS_UPSERT=false
+    - RABBITMQ_EVENTS_GROUP_UPDATE=false
+    - RABBITMQ_EVENTS_GROUP_PARTICIPANTS_UPDATE=false
+    - RABBITMQ_EVENTS_CONNECTION_UPDATE=true
+    - RABBITMQ_EVENTS_CALL=false
+    - RABBITMQ_EVENTS_TYPEBOT_START=false
+    - RABBITMQ_EVENTS_TYPEBOT_CHANGE_STATUS=false
+    - WEBHOOK_GLOBAL_ENABLED=false
+    - WEBHOOK_GLOBAL_URL=<empty>
+    - WEBHOOK_GLOBAL_WEBHOOK_BY_EVENTS=false
+    - WEBHOOK_EVENTS_APPLICATION_STARTUP=false
+    - WEBHOOK_EVENTS_QRCODE_UPDATED=false
+    - WEBHOOK_EVENTS_MESSAGES_SET=false
+    - WEBHOOK_EVENTS_SEND_MESSAGE_UPDATE=false
+    - WEBHOOK_EVENTS_MESSAGES_UPSERT=false
+    - WEBHOOK_EVENTS_MESSAGES_EDITED=false
+    - WEBHOOK_EVENTS_MESSAGES_UPDATE=false
+    - WEBHOOK_EVENTS_MESSAGES_DELETE=false
+    - WEBHOOK_EVENTS_SEND_MESSAGE=false
+    - WEBHOOK_EVENTS_CONTACTS_SET=false
+    - WEBHOOK_EVENTS_CONTACTS_UPSERT=false
+    - WEBHOOK_EVENTS_CONTACTS_UPDATE=false
+    - WEBHOOK_EVENTS_PRESENCE_UPDATE=false
+    - WEBHOOK_EVENTS_CHATS_SET=false
+    - WEBHOOK_EVENTS_CHATS_UPSERT=false
+    - WEBHOOK_EVENTS_CHATS_UPDATE=false
+    - WEBHOOK_EVENTS_CHATS_DELETE=false
+    - WEBHOOK_EVENTS_GROUPS_UPSERT=false
+    - WEBHOOK_EVENTS_GROUPS_UPDATE=false
+    - WEBHOOK_EVENTS_GROUP_PARTICIPANTS_UPDATE=false
+    - WEBHOOK_EVENTS_CONNECTION_UPDATE=false
+    - WEBHOOK_EVENTS_LABELS_EDIT=false
+    - WEBHOOK_EVENTS_LABELS_ASSOCIATION=false
+    - WEBHOOK_EVENTS_CALL=false
+    - WEBHOOK_EVENTS_TYPEBOT_START=false
+    - WEBHOOK_EVENTS_TYPEBOT_CHANGE_STATUS=false
+    - WEBHOOK_EVENTS_ERRORS=false
+    - WEBHOOK_EVENTS_ERRORS_WEBHOOK=<empty>
+    - WEBHOOK_REQUEST_TIMEOUT_MS=60000
+    - WEBHOOK_RETRY_MAX_ATTEMPTS=10
+    - WEBHOOK_RETRY_INITIAL_DELAY_SECONDS=5
+    - WEBHOOK_RETRY_USE_EXPONENTIAL_BACKOFF=true
+    - WEBHOOK_RETRY_MAX_DELAY_SECONDS=300
+    - WEBHOOK_RETRY_JITTER_FACTOR=0.2
+    - WEBHOOK_RETRY_NON_RETRYABLE_STATUS_CODES=<set:WEBHOOK_RETRY_NON_RETRYABLE_STATUS_CODES>
+    - PROVIDER_ENABLED=false
+    - PROVIDER_HOST=<set:PROVIDER_HOST>
+    - PROVIDER_PORT=5656
+    - PROVIDER_PREFIX=<set:PROVIDER_PREFIX>
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+        - node.role == manager
+      labels:
+      - traefik.enable=1
+      - traefik.http.routers.evolution.rule=Host(`evolution.filipeivopereira.com`)
+      - traefik.http.routers.evolution.entrypoints=websecure
+      - traefik.http.routers.evolution.priority=1
+      - traefik.http.routers.evolution.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.evolution.service=evolution
+      - traefik.http.services.evolution.loadbalancer.server.port=8080
+      - traefik.http.services.evolution.loadbalancer.passHostHeader=true
+  evolution_redis:
+    image: redis:latest
+    command:
+    - redis-server
+    - --appendonly
+    - 'yes'
+    - --port
+    - '6379'
+    volumes:
+    - evolution_redis:/data
+    networks:
+    - FilipeNet
+    deploy:
+      placement:
+        constraints:
+        - node.role == manager
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1024M
+volumes:
+  evolution_instances:
+    external: true
+    name: evolution_instances
+  evolution_redis:
+    external: true
+    name: evolution_redis
+networks:
+  FilipeNet:
+    external: true
+    name: FilipeNet
