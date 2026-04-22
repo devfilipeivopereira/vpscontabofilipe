@@ -1,0 +1,127 @@
+{
+  "captured_at": "2026-04-21",
+  "engines": [
+    {
+      "engine": "postgres",
+      "type": "postgresql",
+      "entries": [
+        {
+          "database": "directus",
+          "size_pretty": "15 MB",
+          "table_count": 31,
+          "schemas": [
+            "public"
+          ]
+        },
+        {
+          "database": "evolution",
+          "size_pretty": "438 MB",
+          "table_count": 37,
+          "schemas": [
+            "public"
+          ]
+        },
+        {
+          "database": "n8n_queue",
+          "size_pretty": "14 MB",
+          "table_count": 54,
+          "schemas": [
+            "public"
+          ]
+        },
+        {
+          "database": "postgres",
+          "size_pretty": "8593 kB",
+          "table_count": 0,
+          "schemas": [
+            "public"
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "supabase",
+      "type": "postgresql",
+      "entries": [
+        {
+          "database": "_supabase",
+          "size_pretty": "10 MB",
+          "table_count": 40,
+          "schemas": [
+            "_analytics",
+            "_supavisor",
+            "public"
+          ]
+        },
+        {
+          "database": "postgres",
+          "size_pretty": "347 MB",
+          "table_count": 159,
+          "schemas": [
+            "_realtime",
+            "auth",
+            "cron",
+            "extensions",
+            "graphql",
+            "graphql_public",
+            "net",
+            "pgbouncer",
+            "pgmq",
+            "public",
+            "realtime",
+            "storage",
+            "supabase_functions",
+            "vault"
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "piwigo-mariadb",
+      "type": "mariadb",
+      "entries": [
+        {
+          "database": "piwigodb",
+          "size_pretty": "2.19 MB",
+          "table_count": 34,
+          "tables": [
+            "piwigo_activity",
+            "piwigo_caddie",
+            "piwigo_categories",
+            "piwigo_comments",
+            "piwigo_config",
+            "piwigo_favorites",
+            "piwigo_groups",
+            "piwigo_group_access",
+            "piwigo_history",
+            "piwigo_history_summary",
+            "piwigo_images",
+            "piwigo_image_category",
+            "piwigo_image_format",
+            "piwigo_image_tag",
+            "piwigo_languages",
+            "piwigo_lounge",
+            "piwigo_old_permalinks",
+            "piwigo_plugins",
+            "piwigo_rate",
+            "piwigo_search",
+            "piwigo_sessions",
+            "piwigo_sites",
+            "piwigo_tags",
+            "piwigo_themes",
+            "piwigo_upgrade",
+            "piwigo_users",
+            "piwigo_user_access",
+            "piwigo_user_auth_keys",
+            "piwigo_user_cache",
+            "piwigo_user_cache_categories",
+            "piwigo_user_feed",
+            "piwigo_user_group",
+            "piwigo_user_infos",
+            "piwigo_user_mail_notification"
+          ]
+        }
+      ]
+    }
+  ]
+}

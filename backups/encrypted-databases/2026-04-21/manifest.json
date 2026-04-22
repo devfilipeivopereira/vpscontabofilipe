@@ -1,0 +1,101 @@
+{
+  "captured_at": "2026-04-21",
+  "host": "167.86.110.57",
+  "format": "AESGCM1 (magic 7 bytes + nonce 12 bytes + ciphertext)",
+  "key_file_private": "PRIVATE_BACKUP_ROOT/contabo/keys/db-backup-aesgcm-key-2026-04-21.base64.txt",
+  "backups": [
+    {
+      "engine": "postgresql",
+      "instance": "postgres",
+      "database": "directus",
+      "schema_file": "docs/artefatos/database-schemas/postgres/directus.schema.sql",
+      "storage": {
+        "mode": "single",
+        "file": "postgres-directus-2026-04-21.aesgcm.bin",
+        "size_bytes": 416880,
+        "sha256": "6ea457be54dcefbe4c79f073e6460be388641358a1e82598a0e6e0c2b24c7251"
+      }
+    },
+    {
+      "engine": "postgresql",
+      "instance": "postgres",
+      "database": "evolution",
+      "schema_file": "docs/artefatos/database-schemas/postgres/evolution.schema.sql",
+      "storage": {
+        "mode": "split",
+        "parts": [
+          {
+            "file": "postgres-evolution-2026-04-21.aesgcm.part001",
+            "size_bytes": 52428800,
+            "sha256": "068bce11c9efea256782883c203f9f746267f722ddd79109afc5c779cbb8c9c1"
+          },
+          {
+            "file": "postgres-evolution-2026-04-21.aesgcm.part002",
+            "size_bytes": 43862609,
+            "sha256": "2070d856e0d65c0b605eba41843858d4c96c3ff11bd5e78da4b362510409aaff"
+          }
+        ]
+      }
+    },
+    {
+      "engine": "postgresql",
+      "instance": "postgres",
+      "database": "n8n_queue",
+      "schema_file": "docs/artefatos/database-schemas/postgres/n8n_queue.schema.sql",
+      "storage": {
+        "mode": "single",
+        "file": "postgres-n8n_queue-2026-04-21.aesgcm.bin",
+        "size_bytes": 187669,
+        "sha256": "ef17b61ff3302d928251b101eecc5cb13b0db47a1077170cff864f31e7ff2abd"
+      }
+    },
+    {
+      "engine": "postgresql",
+      "instance": "postgres",
+      "database": "postgres",
+      "schema_file": "docs/artefatos/database-schemas/postgres/postgres.schema.sql",
+      "storage": {
+        "mode": "single",
+        "file": "postgres-postgres-2026-04-21.aesgcm.bin",
+        "size_bytes": 1104,
+        "sha256": "f7f8374074227643fd6e8b94fbbfff64d8df4708b402ab9d23cba4d73626bed5"
+      }
+    },
+    {
+      "engine": "postgresql",
+      "instance": "supabase",
+      "database": "postgres",
+      "schema_file": "docs/artefatos/database-schemas/supabase/postgres.schema.sql",
+      "storage": {
+        "mode": "single",
+        "file": "supabase-postgres-2026-04-21.aesgcm.bin",
+        "size_bytes": 38482167,
+        "sha256": "260388bedda189406051d500d90be366015caa826b0b1426cd616d943c35dfa0"
+      }
+    },
+    {
+      "engine": "postgresql",
+      "instance": "supabase",
+      "database": "_supabase",
+      "schema_file": "docs/artefatos/database-schemas/supabase/supabase_internal.schema.sql",
+      "storage": {
+        "mode": "single",
+        "file": "supabase-supabase_internal-2026-04-21.aesgcm.bin",
+        "size_bytes": 125300,
+        "sha256": "38b9facf02e4575fc98b12988d14addf8a64b93af8efa41fdc1d3bc5abac0cc2"
+      }
+    },
+    {
+      "engine": "mariadb",
+      "instance": "piwigo",
+      "database": "piwigodb",
+      "schema_file": "docs/artefatos/database-schemas/mariadb/piwigodb.schema.sql",
+      "storage": {
+        "mode": "single",
+        "file": "mariadb-piwigodb-2026-04-21.aesgcm.bin",
+        "size_bytes": 164046,
+        "sha256": "6a47429b069e77ca18129b69d66f18003307939a8f9c1539635e3d42d34de38d"
+      }
+    }
+  ]
+}
