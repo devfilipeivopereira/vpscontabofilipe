@@ -45,6 +45,7 @@ Informações sensíveis:
 - [Portainer, YAMLs e Backup Privado](docs/08-portainer-yamls-e-backup-privado.md)
 - [Bancos Mapeados e Backups](docs/09-bancos-mapeados-e-backups.md)
 - [Backup Total via SSH](docs/10-backup-total-via-ssh.md)
+- [Restore em VPS Nova](docs/11-restore-em-vps-nova.md)
 - [Artefatos Sanitizados do Portainer](docs/artefatos/portainer-stacks-sanitizadas/README.md)
 - [Schemas Públicos dos Bancos](docs/artefatos/database-schemas/README.md)
 - [Backups Criptografados dos Bancos](backups/encrypted-databases/2026-04-21/README.md)

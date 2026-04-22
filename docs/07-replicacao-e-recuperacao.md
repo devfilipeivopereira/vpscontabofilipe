@@ -142,3 +142,7 @@ Sempre que houver mudança estrutural relevante na VPS:
 - recalcular e registrar o hash do zip
 - revisar se o script de restore continua compatível com o estado atual do host
 - atualizar a documentação de recuperação
+
+Guia prático complementar:
+- [Backup Total via SSH](10-backup-total-via-ssh.md)
+- [Restore em VPS Nova](11-restore-em-vps-nova.md)

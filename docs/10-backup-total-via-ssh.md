@@ -129,3 +129,13 @@ Sempre que você fizer mudanças grandes em produção:
 - atualize o hash
 - valide o `dry-run` do restore
 - mantenha pelo menos uma cópia extra do zip fora da máquina principal
+
+## Próximo passo recomendado
+
+Na hora de usar esse kit em outra máquina:
+- siga o checklist de preparação do provedor
+- rode primeiro o restore em `dry-run`
+- só depois execute com `--apply`
+
+Material complementar:
+- [Restore em VPS Nova](11-restore-em-vps-nova.md)
