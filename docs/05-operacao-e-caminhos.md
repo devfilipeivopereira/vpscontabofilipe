@@ -13,6 +13,7 @@
 | `/root/.pm2` | PM2 state/logs |
 | `/opt/piwigo` | dados e config do Piwigo |
 | `/opt/backups` | backups em `.tar.gz` detectados |
+| `C:\Users\filip\DEV\VPS\backup` | scripts locais de backup/restore via SSH e kit restaurável |
 
 ## Comandos de Estado
 
@@ -110,3 +111,4 @@ Essa pasta merece uma política documentada à parte se os backups forem parte d
 Material complementar:
 - [Replicação e Recuperação](07-replicacao-e-recuperacao.md)
 - [Portainer, YAMLs e Backup Privado](08-portainer-yamls-e-backup-privado.md)
+- [Backup Total via SSH](10-backup-total-via-ssh.md)

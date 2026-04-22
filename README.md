@@ -44,6 +44,7 @@ Informações sensíveis:
 - [Replicação e Recuperação](docs/07-replicacao-e-recuperacao.md)
 - [Portainer, YAMLs e Backup Privado](docs/08-portainer-yamls-e-backup-privado.md)
 - [Bancos Mapeados e Backups](docs/09-bancos-mapeados-e-backups.md)
+- [Backup Total via SSH](docs/10-backup-total-via-ssh.md)
 - [Artefatos Sanitizados do Portainer](docs/artefatos/portainer-stacks-sanitizadas/README.md)
 - [Schemas Públicos dos Bancos](docs/artefatos/database-schemas/README.md)
 - [Backups Criptografados dos Bancos](backups/encrypted-databases/2026-04-21/README.md)
@@ -81,3 +82,4 @@ Camada extra de segurança documental:
 - este repositório agora inclui snapshots sanitizados das stacks salvas no Portainer
 - os artefatos brutos com segredos foram guardados fora do Git em um kit privado de recuperação
 - os dumps de banco publicados aqui ficam criptografados, com chave mantida fora do Git
+- existe também um kit local de backup amplo via SSH, com script de backup, script de restore e pacote zipado restaurável
